@@ -9,24 +9,17 @@ if(isset($_POST['id']) && isset($_POST['id']) != "")
     $animal_id = $_POST['id'];
 
     // Get User Details
-    $sql = "SELECT * FROM animales  where  animal_id = '$animal_id'";
-    if (!$resultado = $mysqli->query($sql)) {
-        echo "Lo sentimos, este sitio web está experimentando problemas.";
-        exit;
+    $sql = "SELECT * FROM animales where animal_id = $animal_id";
+
+    $result = $mysqli->query($sql);
+
+    while($row = $result->fetch_assoc()){
+        $json[] = $row;
     }
 
-    $response = array();
+    $data = $json[0];
 
-    if ($resultado->num_rows > 0) {
-        while ($row = mysqli_fetch_assoc ($resultado)) {
-            $response = $row;
-        }
-    } else {
-        $response['status'] = 200;
-        $response['message'] = "Data not found!";
-    }
-    // display JSON data
-    echo json_encode($response);
+    echo json_encode($data);
 }
 else
 {
@@ -34,5 +27,5 @@ else
     $response['message'] = "Invalid Request!";
 }
 
-$resultado->free();
+$result->free();
 $mysqli->close();

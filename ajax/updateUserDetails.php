@@ -8,19 +8,28 @@ if(isset($_POST))
     // get values
     $animal_id = $_POST['id'];
     $name = $_POST['name'];
-//    $age =  $_POST['update_age'];
-//    $breed = $_POST['update_breed'];
-//    $weight = $_POST['update_weight'];
-//    $arrived = $_POST['update_arrived'];
-//    $description = $_POST['update_description'];
-//    $size = $_POST['update_size'];
-//    $adopted = $_POST['update_adopted'];
+    $age =  $_POST['age'];
+    $breed = $_POST['breed'];
+    $weight = $_POST['weight'];
+    $arrived = $_POST['arrived'];
+    $description = $_POST['desc'];
+    $size = $_POST['size'];
+    $puppy = $_POST['puppy'];
+    $adopted = $_POST['adopted'];
+    $adoptedDate = $_POST['adoptedDate'];
+
 
     // Updaste User details
-    $query = "UPDATE animales SET name = '$name' WHERE animal_id = '$animal_id'";
+    $query = "UPDATE animales 
+                SET name = '$name', age = '$age', breed = '$breed', 
+                    weight = '$weight', arrived = '$arrived', description = '$description', 
+                    size = '$size', adopted = '$adopted', adopted_date = '$adoptedDate' 
+              WHERE animal_id = '$animal_id'";
 
+    echo $query;
 
     if ($mysqli->query($query) === TRUE) {
+        echo "ok";
 
     } else {
         echo "Lo sentimos, este sitio web está experimentando problemas.";

@@ -1,15 +1,19 @@
 <?php
 
-// Connection variables 
-//$host = "pdb11.atspace.me"; // MySQL host name eg. localhost
-//$user = "1377211_pupetc"; // MySQL user. eg. root ( if your on localserver)
-//$password = "mysqlapapupetc2017"; // MySQL user password  (if password is not set for your root user then keep it empty )
-//$database = "1377211_pupetc"; // MySQL Database name
+// Connection variables
 
 $host = "localhost"; // MySQL host name eg. localhost
 $user = "root"; // MySQL user. eg. root ( if your on localserver)
 $password = ""; // MySQL user password  (if password is not set for your root user then keep it empty )
 $database = "apapupetc"; // MySQL Database name
+
+
+
+//
+// $host = "pdb11.atspace.me"; // MySQL host name eg. localhost
+// $user = "1377211_pupetc"; // MySQL user. eg. root ( if your on localserver)
+// $password = "apapupetc2017db"; // MySQL user password  (if password is not set for your root user then keep it empty )
+// $database = "1377211_pupetc"; // MySQL Database name
 
 $mysqli = new mysqli($host, $user, $password, $database);
 

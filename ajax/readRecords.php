@@ -5,12 +5,12 @@ include("db_connection.php");
 // Design initial table header
 $data = '<table class="table table-bordered table-striped">
 						<tr>
-							<th>Id</th>
+							<th class="hidden-xs hidden-sm">Id</th>
 							<th>Nombre</th>
 							<th>Edad</th>
 							<th>Entrada</th>
 							<th>Raza</th>
-							<th>Peso</th>
+							<th class="hidden-xs hidden-sm">Peso</th>
 							<th>Acciones</th>
 						</tr>';
 
@@ -24,13 +24,15 @@ if (!$resultado = $mysqli->query($sql)) {
 if ($resultado->num_rows > 0) {
     while ($animal = $resultado->fetch_assoc()) {
         $data .= '<tr>
-				<td>'.$animal['animal_id'].'</td>
+				<td class="hidden-xs hidden-sm">'.$animal['animal_id'].'</td>
 				<td>'.utf8_encode($animal['name']).'</td>
 				<td>'.utf8_encode($animal['age']).'</td>
 				<td>'.utf8_encode($animal['arrived']).'</td>
 				<td>'.utf8_encode($animal['breed']).'</td>
-				<td>'.utf8_encode($animal['weight']).'</td>
+				<td class="hidden-xs hidden-sm">'.utf8_encode($animal['weight']).'</td>
 				<td>
+				    <button onclick="getUserDetailsPanel('.$animal['animal_id'].')" class="btn btn-warning">Ver ficha</button>
+				    <button onclick="openImagesForm()" class="btn btn-warning" >Añadir imagen</button>
 					<button onclick="getUserDetails('.$animal['animal_id'].')" class="btn btn-warning">Editar</button>
 					<button data-toggle="modal"
 					onclick="setAnimalIdToDelete('.$animal['animal_id'].');"
